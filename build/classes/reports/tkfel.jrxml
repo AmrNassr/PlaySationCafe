@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="dayfollowup" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="73fffd13-e2c6-402c-a657-9cc81f51d89f">
+	<property name="ireport.zoom" value="1.4641000000000008"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="from" class="java.lang.String"/>
+	<parameter name="to" class="java.lang.String"/>
+	<parameter name="fulldatee" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT *  FROM cafe.roomitems  WHERE   date BETWEEN  CAST($P{from} AS DATE) AND  CAST($P{to} AS DATE) and mark = 'No' order by buyserial;]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="item" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="number" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="price" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="buyserial" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mark" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="date" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fulldate" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="total" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="room" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="variable1" class="java.lang.Integer">
+		<variableExpression><![CDATA[$V{variable1}+1]]></variableExpression>
+		<initialValueExpression><![CDATA[0]]></initialValueExpression>
+	</variable>
+	<variable name="sum" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{total}]]></variableExpression>
+	</variable>
+	<group name="Rep GROUP">
+		<groupExpression><![CDATA[]]></groupExpression>
+	</group>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement uuid="b5506e36-a0a4-4af8-a14b-5f539f8545ac" mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699"/>
+				<staticText>
+					<reportElement uuid="33a0d4c5-08bc-4056-ba0a-d1c78269258d" x="224" y="20" width="161" height="37" forecolor="#FFFFFF"/>
+					<textElement>
+						<font size="24" isBold="true"/>
+					</textElement>
+					<text><![CDATA[تقفيل الحسابات]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9908a3fa-0217-4f20-b2ae-c58d89c00ecd" x="536" y="61" width="34" height="28" forecolor="#CCFFFF"/>
+					<textElement textAlignment="Right">
+						<font fontName="Arial" size="20" isBold="true"/>
+					</textElement>
+					<text><![CDATA[من :]]></text>
+				</staticText>
+				<textField pattern="MM/dd/yyyy">
+					<reportElement uuid="de783248-f3ec-4939-b456-d11fdc61b3a0" x="430" y="61" width="106" height="26" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Right">
+						<font fontName="Arial" size="20"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{from}]]></textFieldExpression>
+				</textField>
+				<textField pattern="MM/dd/yyyy">
+					<reportElement uuid="c9735f86-b605-430e-a3c4-230b2f81ad3f" x="256" y="61" width="105" height="26" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Right">
+						<font fontName="Arial" size="20"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{to}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="5dff1983-8d70-43d7-bec5-5ffb3bd43c9a" x="361" y="61" width="36" height="28" forecolor="#CCFFFF"/>
+					<textElement textAlignment="Right">
+						<font fontName="Arial" size="20" isBold="true"/>
+					</textElement>
+					<text><![CDATA[الي :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="45beaa2f-b8d2-45cc-b543-4be20648c776" x="178" y="61" width="60" height="28" isPrintWhenDetailOverflows="true" forecolor="#CCFFFF"/>
+					<textElement textAlignment="Right">
+						<font fontName="Arial" size="20" isBold="true"/>
+					</textElement>
+					<text><![CDATA[الوقت  :]]></text>
+				</staticText>
+				<textField pattern="MM/dd/yyyy">
+					<reportElement uuid="08cb6d62-12e2-4702-a67c-2174c97d30cd" x="42" y="61" width="136" height="26" isPrintWhenDetailOverflows="true" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Right">
+						<font fontName="Arial" size="20"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{fulldatee}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="50">
+			<staticText>
+				<reportElement uuid="83977018-2c24-4671-8d0f-730a9a52c634" mode="Opaque" x="516" y="21" width="39" height="29" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box leftPadding="0">
+					<topPen lineWidth="1.0" lineColor="#003399"/>
+					<leftPen lineWidth="1.0" lineColor="#003399"/>
+					<bottomPen lineWidth="1.0" lineColor="#003399"/>
+					<rightPen lineWidth="1.0" lineColor="#003399"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="17" isBold="true"/>
+				</textElement>
+				<text><![CDATA[رقم]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6c091ac6-b63d-4265-9317-d35988b51d7d" mode="Opaque" x="289" y="21" width="45" height="29" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box leftPadding="0">
+					<topPen lineWidth="1.0" lineColor="#003399"/>
+					<leftPen lineWidth="1.0" lineColor="#003399"/>
+					<bottomPen lineWidth="1.0" lineColor="#003399"/>
+					<rightPen lineWidth="1.0" lineColor="#003399"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="17" isBold="true"/>
+				</textElement>
+				<text><![CDATA[العدد]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="98d60f88-d0ec-423a-bb0c-b0a3e4cc8179" mode="Opaque" x="334" y="21" width="98" height="29" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box leftPadding="0" rightPadding="4">
+					<topPen lineWidth="1.0" lineColor="#003399"/>
+					<leftPen lineWidth="1.0" lineColor="#003399"/>
+					<bottomPen lineWidth="1.0" lineColor="#003399"/>
+					<rightPen lineWidth="1.0" lineColor="#003399"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="17" isBold="true"/>
+				</textElement>
+				<text><![CDATA[المنتج]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fa093748-5382-4557-9adc-f4a776d70528" mode="Opaque" x="239" y="21" width="50" height="29" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box leftPadding="0">
+					<topPen lineWidth="1.0" lineColor="#003399"/>
+					<leftPen lineWidth="1.0" lineColor="#003399"/>
+					<bottomPen lineWidth="1.0" lineColor="#003399"/>
+					<rightPen lineWidth="1.0" lineColor="#003399"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="17" isBold="true"/>
+				</textElement>
+				<text><![CDATA[السعر]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="37f1cf20-2735-4d8c-ba87-1176a1f59da4" mode="Opaque" x="0" y="21" width="117" height="29" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box leftPadding="0">
+					<topPen lineWidth="1.0" lineColor="#003399"/>
+					<leftPen lineWidth="1.0" lineColor="#003399"/>
+					<bottomPen lineWidth="1.0" lineColor="#003399"/>
+					<rightPen lineWidth="1.0" lineColor="#003399"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="17" isBold="true"/>
+				</textElement>
+				<text><![CDATA[التاريخ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1acbcbc3-a58b-41f8-bee6-be98b94e1b49" mode="Opaque" x="177" y="21" width="62" height="29" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box leftPadding="0">
+					<topPen lineWidth="1.0" lineColor="#003399"/>
+					<leftPen lineWidth="1.0" lineColor="#003399"/>
+					<bottomPen lineWidth="1.0" lineColor="#003399"/>
+					<rightPen lineWidth="1.0" lineColor="#003399"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="17" isBold="true"/>
+				</textElement>
+				<text><![CDATA[المجموع]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="efccf4a3-87a0-4967-ad2b-9aeaa9e02bf8" mode="Opaque" x="117" y="21" width="60" height="29" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box leftPadding="0">
+					<topPen lineWidth="1.0" lineColor="#003399"/>
+					<leftPen lineWidth="1.0" lineColor="#003399"/>
+					<bottomPen lineWidth="1.0" lineColor="#003399"/>
+					<rightPen lineWidth="1.0" lineColor="#003399"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="17" isBold="true"/>
+				</textElement>
+				<text><![CDATA[الغرفة]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="26e953ed-7420-4d48-9172-104370fab340" mode="Opaque" x="432" y="21" width="84" height="29" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box leftPadding="0" rightPadding="4">
+					<topPen lineWidth="1.0" lineColor="#003399"/>
+					<leftPen lineWidth="1.0" lineColor="#003399"/>
+					<bottomPen lineWidth="1.0" lineColor="#003399"/>
+					<rightPen lineWidth="1.0" lineColor="#003399"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="17" isBold="true"/>
+				</textElement>
+				<text><![CDATA[كود العملية]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="37">
+			<textField isStretchWithOverflow="true" pattern="###0">
+				<reportElement uuid="fa9917ec-d5d3-46fb-9b8f-0a32ce25b060" x="516" y="0" width="39" height="37"/>
+				<box leftPadding="0">
+					<topPen lineWidth="1.0" lineColor="#003399"/>
+					<leftPen lineWidth="1.0" lineColor="#003399"/>
+					<bottomPen lineWidth="1.0" lineColor="#003399"/>
+					<rightPen lineWidth="1.0" lineColor="#003399"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{variable1}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="ed4c2c62-0ff7-4eea-a69e-da826a89baf6" x="239" y="0" width="50" height="37"/>
+				<box leftPadding="0">
+					<topPen lineWidth="1.0" lineColor="#003399"/>
+					<leftPen lineWidth="1.0" lineColor="#003399"/>
+					<bottomPen lineWidth="1.0" lineColor="#003399"/>
+					<rightPen lineWidth="1.0" lineColor="#003399"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{price}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0">
+				<reportElement uuid="c6020a86-4c7d-4dc7-a11f-e544a2073194" x="289" y="0" width="45" height="37"/>
+				<box leftPadding="0">
+					<topPen lineWidth="1.0" lineColor="#003399"/>
+					<leftPen lineWidth="1.0" lineColor="#003399"/>
+					<bottomPen lineWidth="1.0" lineColor="#003399"/>
+					<rightPen lineWidth="1.0" lineColor="#003399"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{number}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="8cfc86db-3cc4-45e6-8214-9959f37689f6" x="334" y="0" width="98" height="37"/>
+				<box leftPadding="0" rightPadding="4">
+					<topPen lineWidth="1.0" lineColor="#003399"/>
+					<leftPen lineWidth="1.0" lineColor="#003399"/>
+					<bottomPen lineWidth="1.0" lineColor="#003399"/>
+					<rightPen lineWidth="1.0" lineColor="#003399"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{item}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0">
+				<reportElement uuid="8e13bd47-303a-4d95-8e13-335222009cbf" x="0" y="0" width="117" height="37"/>
+				<box leftPadding="0">
+					<topPen lineWidth="1.0" lineColor="#003399"/>
+					<leftPen lineWidth="1.0" lineColor="#003399"/>
+					<bottomPen lineWidth="1.0" lineColor="#003399"/>
+					<rightPen lineWidth="1.0" lineColor="#003399"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fulldate}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="###0">
+				<reportElement uuid="b23c15b7-975b-46a5-a2e4-01e60f8b7f4e" x="177" y="0" width="62" height="37"/>
+				<box leftPadding="0">
+					<topPen lineWidth="1.0" lineColor="#003399"/>
+					<leftPen lineWidth="1.0" lineColor="#003399"/>
+					<bottomPen lineWidth="1.0" lineColor="#003399"/>
+					<rightPen lineWidth="1.0" lineColor="#003399"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="72a74903-4854-485d-b1b5-8a4213a8ccdc" x="117" y="0" width="60" height="37"/>
+				<box leftPadding="0">
+					<topPen lineWidth="1.0" lineColor="#003399"/>
+					<leftPen lineWidth="1.0" lineColor="#003399"/>
+					<bottomPen lineWidth="1.0" lineColor="#003399"/>
+					<rightPen lineWidth="1.0" lineColor="#003399"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{room}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="c12c7f37-8742-47cf-91bb-f286e4ba1b3a" x="432" y="0" width="84" height="37"/>
+				<box leftPadding="0" rightPadding="4">
+					<topPen lineWidth="1.0" lineColor="#003399"/>
+					<leftPen lineWidth="1.0" lineColor="#003399"/>
+					<bottomPen lineWidth="1.0" lineColor="#003399"/>
+					<rightPen lineWidth="1.0" lineColor="#003399"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{buyserial}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement uuid="0281f5c7-f25c-4d05-80a2-8661323d90d2" mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="b8f813e4-54c1-4d44-b3b2-6647494b0fa7" mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement uuid="d6730275-bc80-4ff8-b946-11454155293f" x="0" y="4" width="100" height="13"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="50">
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="37dc15c9-666c-4775-9f13-ccdb4e1eeb30" x="91" y="10" width="103" height="23"/>
+				<box leftPadding="0">
+					<topPen lineWidth="1.0" lineColor="#003399"/>
+					<leftPen lineWidth="1.0" lineColor="#003399"/>
+					<bottomPen lineWidth="1.0" lineColor="#003399"/>
+					<rightPen lineWidth="1.0" lineColor="#003399"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sum}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="045634ed-2b24-4528-b8a3-4846734273c2" mode="Opaque" x="194" y="10" width="106" height="23" forecolor="#006699" backcolor="#E6E6E6"/>
+				<box leftPadding="0">
+					<topPen lineWidth="1.0" lineColor="#003399"/>
+					<leftPen lineWidth="1.0" lineColor="#003399"/>
+					<bottomPen lineWidth="1.0" lineColor="#003399"/>
+					<rightPen lineWidth="1.0" lineColor="#003399"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[المجموع]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>
